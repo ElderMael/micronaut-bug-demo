@@ -1,6 +1,21 @@
-applicationType: cli
-defaultPackage: io.eldermael.micronaut
+applicationType: default
+defaultPackage: io.eldermael.micronaut.bug.demo
 testFramework: junit
 sourceLanguage: java
 buildTool: gradle
-features: [annotation-api, app-name, gradle, jackson-databind, java, junit, logback, micronaut-build, picocli, picocli-java-application, picocli-junit, readme, shade, yaml]
+features: [
+  annotation-api,
+  app-name,
+  gradle,
+  jackson-databind,
+  java,
+  junit,
+  logback,
+  micronaut-build,
+  picocli,
+  picocli-java-application,
+  picocli-junit,
+  readme,
+  shade,
+  yaml
+]

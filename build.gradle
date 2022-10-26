@@ -11,21 +11,37 @@ repositories {
 }
 
 dependencies {
+    // Lombok, Always Before Other Processors
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor "org.projectlombok:lombok:1.18.12"
+
+    // Micronaut Processors
     annotationProcessor("info.picocli:picocli-codegen")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.micrometer:micronaut-micrometer-annotation")
+
+    // CLI
     implementation("info.picocli:picocli")
-    implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut.picocli:micronaut-picocli")
+
+    // Metrics
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+
     implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind")
 
+    runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
-
+    testImplementation("io.rest-assured:rest-assured:5.2.0")
 }
 
 
 application {
-    mainClass.set("io.eldermael.micronaut.BugDemoCommand")
+    mainClass.set("io.eldermael.micronaut.bug.demo.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
@@ -33,10 +49,11 @@ java {
 }
 
 micronaut {
+    runtime("netty")
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("io.eldermael.micronaut.*")
+        annotations("io.eldermael.micronaut.bug.demo.*")
     }
 }
 
