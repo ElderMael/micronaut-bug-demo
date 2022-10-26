@@ -3,12 +3,8 @@ package io.eldermael.micronaut.bug.demo.client;
 import io.eldermael.micronaut.bug.demo.Application;
 import io.eldermael.micronaut.bug.demo.server.Server;
 import io.micronaut.runtime.Micronaut;
-import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-
-import static java.util.Map.entry;
-import static java.util.Map.ofEntries;
 
 @Command(name = "bug", description = "...", mixinStandardHelpOptions = true,
     subcommands = {
